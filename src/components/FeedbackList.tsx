@@ -1,15 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import FeedbackItem from './FeedbackItem';
+import { TFeedbackItem } from '../lib/types';
 
-type FeedbackItem = {
-    id: number;
-    upvoteCount: number;
-    badgeLetter: string;
-    companyName: string;
-    text: string;
-    daysAgo: number;
-};
+import FeedbackItem from './FeedbackItem';
 
 export default function FeedbackList() {
     const [feedbackItems, setFeedbackItems] = useState([]);
@@ -24,7 +17,7 @@ export default function FeedbackList() {
 
     return (
         <ol className="feedback-list">
-            {feedbackItems.map((item: FeedbackItem) => (
+            {feedbackItems.map((item: TFeedbackItem) => (
                 <FeedbackItem key={item.id} feedbackItem={item} />
             ))}
         </ol>
