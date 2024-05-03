@@ -1,6 +1,6 @@
-import { TFeedbackItem } from '../lib/types';
+import { TFeedbackItem } from "../../lib/types";
 
-import { TriangleUpIcon } from '@radix-ui/react-icons';
+import { TriangleUpIcon } from "@radix-ui/react-icons";
 
 type FeedbackItemProp = {
     feedbackItem: TFeedbackItem;
@@ -19,7 +19,7 @@ export default function FeedbackItem({ feedbackItem }: FeedbackItemProp) {
             </div>
 
             <div>
-                <p>{feedbackItem.companyName}</p>
+                <p>{feedbackItem.company}</p>
                 <p>{feedbackItem.text}</p>
             </div>
 

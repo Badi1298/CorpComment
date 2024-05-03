@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { MAX_CHARACTERS } from '../lib/constants';
+import { MAX_CHARACTERS } from "../../lib/constants";
 
-export default function FeedbackForm() {
-    const [feedback, setFeedback] = useState('');
+type FeedbackFormProps = {
+    onSubmit: (text: string) => void;
+};
+
+export default function FeedbackForm({ onSubmit }: FeedbackFormProps) {
+    const [feedback, setFeedback] = useState("");
 
     const charCount = MAX_CHARACTERS - feedback.length;
 
@@ -17,7 +21,8 @@ export default function FeedbackForm() {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        console.log(feedback);
+        onSubmit(feedback);
+        setFeedback("");
     };
 
     return (
