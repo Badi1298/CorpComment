@@ -1,21 +1,24 @@
-type HashtagListProps = {
-    companyList: string[];
-    onSelectCompany: (company: string) => void;
-};
+import React from "react";
 
-export default function HashtagList({
-    companyList,
-    onSelectCompany,
-}: HashtagListProps) {
+import { useFeedbackItemsStore } from "../../stores/feedbackItemsStore";
+
+export default function HashtagList() {
+    const companyList = useFeedbackItemsStore((state) =>
+        state.getCompanyList()
+    );
+    const selectCompany = useFeedbackItemsStore((state) => state.selectCompany);
+
     return (
         <ul className="hashtags">
-            {companyList.map((company) => (
-                <li key={company}>
-                    <button onClick={() => onSelectCompany(company)}>
-                        #{company}
-                    </button>
-                </li>
-            ))}
+            {companyList.map(
+                (company: string): React.ReactNode => (
+                    <li key={company}>
+                        <button onClick={() => selectCompany(company)}>
+                            #{company}
+                        </button>
+                    </li>
+                )
+            )}
         </ul>
     );
 }
